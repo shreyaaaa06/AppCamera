@@ -34,8 +34,8 @@ class GeminiAIService(private val context: Context) {
     companion object {
         private const val TAG = "GeminiAIService"
         private const val GEMINI_API_URL =
-            "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
-        private const val API_KEY = "YOUR_API_KEY"  //i have replaced
+            "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent"
+        private const val API_KEY = "Your_api_key"  //i have replaced
 
         private const val TIMEOUT_SECONDS = 30L
     }
@@ -270,7 +270,7 @@ Return EXACTLY this JSON format with 3-4 diverse suggestions:
       "action_value": "food_mode",
       "priority": 1,
       "icon": "🍽️"
-    } 
+    }  
   ] 
 }
 MANDATORY FOR DEMO: Always include exactly ONE phone-controlled suggestion (portrait,night,flash, zoom, grid, or aspect ratio) that can be automatically applied, plus 2-3 movement suggestions. Choose the most relevant phone setting based on current conditions.
@@ -323,9 +323,10 @@ IMPORTANT: Give varied, creative advice based on what you actually see. Don't re
                         action = parseAction(suggestionObj.getString("action")),
 
                         icon = suggestionObj.getString("icon"),
-                        priority = suggestionObj.optInt("priority", 1)
+                        priority = suggestionObj.optInt("priority", 1),
 
-                    )
+
+                        )
 
                     suggestions.add(suggestion)
 // Extract target value from AI response
